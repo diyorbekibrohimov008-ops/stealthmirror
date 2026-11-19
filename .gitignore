@@ -13,3 +13,6 @@ coverage
 *.pem
 *.key
 .data/
+
+.vercel
+.env*
