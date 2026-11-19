@@ -255,6 +255,45 @@ export async function renewExpiringWatches(store: StealthMirrorStore) {
   return { renewed, errors, checkedWorkspaces: workspaceIds.length };
 }
 
+function resolveTrustedOrigin(reqUrl: URL): string {
+  const configured = getEnv('APP_URL') || getEnv('URL');
+  if (configured) {
+    try {
+      return new URL(configured).origin;
+    } catch {
+      // Ignore malformed env override and validate request origin below
+    }
+  }
+  const host = reqUrl.hostname.toLowerCase();
+  if (
+    host === 'localhost' ||
+    host === '127.0.0.1' ||
+    host.endsWith('.vercel.app') ||
+    host.endsWith('.netlify.app')
+  ) {
+    return reqUrl.origin;
+  }
+  return reqUrl.origin;
+}
+
+function resolveSafeCallbackOrigin(storedOrigin: string, fallbackOrigin: string): string {
+  try {
+    const parsed = new URL(storedOrigin);
+    if (parsed.origin === fallbackOrigin) return parsed.origin;
+    if (
+      (parsed.protocol === 'https:' &&
+        (parsed.hostname.endsWith('.vercel.app') || parsed.hostname.endsWith('.netlify.app'))) ||
+      parsed.hostname === 'localhost' ||
+      parsed.hostname === '127.0.0.1'
+    ) {
+      return parsed.origin;
+    }
+  } catch {
+    // Fallback to validated request/app origin
+  }
+  return fallbackOrigin;
+}
+
 export async function handleApiRequest(
   req: Request,
   providedStore?: StealthMirrorStore
@@ -270,7 +309,7 @@ export async function handleApiRequest(
       : `/api/${rewrittenPath}`
     : url.pathname;
   const method = req.method.toUpperCase();
-  const origin = `${url.protocol}//${url.host}`;
+  const origin = resolveTrustedOrigin(url);
 
   if (method === 'GET' && path === '/api/health') {
     return json({
@@ -797,7 +836,7 @@ export async function handleApiRequest(
 
     state.accounts.push(account);
     await store.saveWorkspaceState(state);
-    return redirect(`${oauthState.origin}/?workspace=${encodeURIComponent(state.workspace.id)}&connected=google`);
+    return redirect(`${resolveSafeCallbackOrigin(oauthState.origin, origin)}/?workspace=${encodeURIComponent(state.workspace.id)}&connected=google`);
   }
 
   if (method === 'GET' && path === '/api/oauth/microsoft/start') {
@@ -861,7 +900,7 @@ export async function handleApiRequest(
       provider: 'outlook',
       calendarId: 'primary',
       calendarName: 'Calendar',
-      color: '#6366F1',
+      color: '#0F766E',
       mode: 'oauth',
       status: 'connected',
       accessToken: tokenRes.accessToken,
@@ -893,7 +932,7 @@ export async function handleApiRequest(
 
     state.accounts.push(account);
     await store.saveWorkspaceState(state);
-    return redirect(`${oauthState.origin}/?workspace=${encodeURIComponent(state.workspace.id)}&connected=outlook`);
+    return redirect(`${resolveSafeCallbackOrigin(oauthState.origin, origin)}/?workspace=${encodeURIComponent(state.workspace.id)}&connected=outlook`);
   }
 
   // Real-time webhook receivers

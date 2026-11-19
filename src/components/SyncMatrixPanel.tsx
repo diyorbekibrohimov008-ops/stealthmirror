@@ -51,7 +51,7 @@ interface SyncMatrixPanelProps {
   onDeleteRule: (ruleId: string) => Promise<void>;
 }
 
-const COLOR_SWATCHES = ['#0EA5E9', '#6366F1', '#10B981', '#F59E0B', '#EC4899', '#8B5CF6'];
+const COLOR_SWATCHES = ['#0EA5E9', '#0F766E', '#10B981', '#F59E0B', '#EC4899', '#0891B2'];
 const SAFE_BUSY_TITLES = ['Busy', 'Busy — Blocked', 'Unavailable', 'Private Block'];
 
 export function SyncMatrixPanel({
@@ -236,7 +236,7 @@ export function SyncMatrixPanel({
                 required
                 value={label}
                 onChange={(e) => setLabel(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               />
             </label>
 
@@ -247,7 +247,7 @@ export function SyncMatrixPanel({
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               />
             </label>
 

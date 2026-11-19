@@ -5,3 +5,11 @@ dist
 .env.local
 coverage
 .vercel
+
+# Secrets, environment variables, and deploy state
+.env.*
+*.env
+!.env.example
+*.pem
+*.key
+.data/

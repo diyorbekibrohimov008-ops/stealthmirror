@@ -425,7 +425,7 @@ export class StealthMirrorStore {
         provider: 'outlook',
         calendarId: 'primary',
         calendarName: 'Microsoft 365',
-        color: '#6366F1',
+        color: '#0F766E',
         mode: 'sandbox',
         status: 'connected',
         watchChannelId: 'sub_demo_client',

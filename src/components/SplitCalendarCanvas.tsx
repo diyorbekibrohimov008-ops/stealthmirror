@@ -80,7 +80,7 @@ function ProviderPill({ provider }: { provider: CalendarAccount['provider'] }) {
       Google
     </span>
   ) : (
-    <span className="inline-flex items-center rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] font-semibold text-indigo-700 ring-1 ring-indigo-200">
+    <span className="inline-flex items-center rounded bg-teal-50 px-1.5 py-0.5 text-[10px] font-semibold text-teal-800 ring-1 ring-teal-200">
       Outlook 365
     </span>
   );
@@ -274,7 +274,7 @@ export function SplitCalendarCanvas({
         <div className="rounded-xl border border-slate-200 bg-white p-3.5 shadow-xs">
           <div className="flex items-center justify-between text-xs text-slate-500">
             <span>Loop Guard Engine</span>
-            <ShieldCheck className="h-3.5 w-3.5 text-violet-600" />
+            <ShieldCheck className="h-3.5 w-3.5 text-teal-700" />
           </div>
           <div className="mt-1 flex items-baseline justify-between gap-2">
             <span className="font-mono text-2xl font-bold text-slate-900">
@@ -284,7 +284,7 @@ export function SplitCalendarCanvas({
               type="button"
               onClick={() => void onTestLoopGuard()}
               disabled={busyAction !== null || stats.mirroredBlockCount === 0}
-              className="rounded bg-violet-50 px-2 py-0.5 text-[11px] font-semibold text-violet-700 ring-1 ring-violet-200 hover:bg-violet-100 disabled:opacity-40"
+              className="rounded bg-teal-50 px-2 py-0.5 text-[11px] font-semibold text-teal-800 ring-1 ring-teal-200 hover:bg-teal-100 disabled:opacity-40"
             >
               Test Loop
             </button>
@@ -413,7 +413,7 @@ export function SplitCalendarCanvas({
               <select
                 value={selectedAccountId}
                 onChange={(e) => setAccountId(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               >
                 {accounts.map((acc) => (
                   <option key={acc.id} value={acc.id}>
@@ -432,7 +432,7 @@ export function SplitCalendarCanvas({
                 required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
                 placeholder="e.g., Executive Comp Review"
               />
             </label>
@@ -442,7 +442,7 @@ export function SplitCalendarCanvas({
               <select
                 value={dayKey}
                 onChange={(e) => setDayKey(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               >
                 <option value={days.todayKey}>{days.todayLabel}</option>
                 <option value={days.tomorrowKey}>{days.tomorrowLabel}</option>
@@ -455,7 +455,7 @@ export function SplitCalendarCanvas({
                 value={startHour}
                 disabled={allDay}
                 onChange={(e) => setStartHour(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900 disabled:bg-slate-100"
+                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 disabled:bg-slate-100"
               >
                 {Array.from({ length: 14 }, (_, idx) => idx + 7).map((hr) => (
                   <option key={hr} value={hr}>
@@ -471,7 +471,7 @@ export function SplitCalendarCanvas({
                 value={durationHours}
                 disabled={allDay}
                 onChange={(e) => setDurationHours(Number(e.target.value))}
-                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900 disabled:bg-slate-100"
+                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40 disabled:bg-slate-100"
               >
                 <option value={1}>60 min</option>
                 <option value={2}>120 min</option>
@@ -483,7 +483,7 @@ export function SplitCalendarCanvas({
               <select
                 value={showAs}
                 onChange={(e) => setShowAs(e.target.value as EventShowAs)}
-                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               >
                 <option value="busy">Busy (Mirrors to targets)</option>
                 <option value="oof">Out of Office (Mirrors)</option>
@@ -499,7 +499,7 @@ export function SplitCalendarCanvas({
                 onChange={(e) =>
                   setResponseStatus(e.target.value as EventResponseStatus)
                 }
-                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 bg-white px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               >
                 <option value="accepted">Accepted</option>
                 <option value="declined">Declined (Skipped cleanly)</option>
@@ -514,7 +514,7 @@ export function SplitCalendarCanvas({
                 type="text"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               />
             </label>
 
@@ -526,7 +526,7 @@ export function SplitCalendarCanvas({
                 type="text"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               />
             </label>
 
@@ -538,7 +538,7 @@ export function SplitCalendarCanvas({
                 type="text"
                 value={attendeesRaw}
                 onChange={(e) => setAttendeesRaw(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs text-slate-900 outline-none focus:border-slate-900"
+                className="w-full rounded-lg border border-slate-200 px-2.5 py-2 text-xs text-slate-900 focus:border-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/40"
               />
             </label>
           </div>

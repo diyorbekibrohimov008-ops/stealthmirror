@@ -119,7 +119,7 @@ export function Navbar({
               aria-label="Workspace selector"
               value={workspace.id}
               onChange={(e) => onSwitchWorkspace(e.target.value)}
-              className="bg-transparent font-medium text-slate-800 outline-none"
+              className="rounded bg-transparent font-medium text-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500/60"
             >
               {workspaceIds.map((id) => (
                 <option key={id} value={id}>

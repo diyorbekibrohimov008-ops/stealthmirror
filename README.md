@@ -4,6 +4,10 @@ Cross-account calendar firewall for Google Calendar and Microsoft Outlook / 365.
 
 Instead of taking over your schedule with rescheduling clutter or charging per-pair fees with 15–30 minute delays, StealthMirror mirrors private, unmovable `"Busy"` blocks across unlimited connected calendars in sub-second webhooks — with zero title, description, location, or attendee leaks.
 
+> [!WARNING]
+> **Project Status — Work in Progress (Not Fully Ready)**
+> This project is currently under active development and is **not fully ready for production**. Some parts, features, or workflow steps will fail or behave unexpectedly. We are actively working on fixing all remaining issues.
+
 ## Live Deployment
 
 - **Production URL**: [https://stealthmirror-ibroximov.vercel.app](https://stealthmirror-ibroximov.vercel.app)

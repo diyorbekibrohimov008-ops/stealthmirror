@@ -23,7 +23,7 @@ const ACTION_BADGE_MAP: Record<SyncLogEntry['action'], { label: string; classes:
   deleted: { label: 'DELETED', classes: 'bg-slate-100 text-slate-700 ring-slate-200' },
   skipped_loop: {
     label: 'LOOP BLOCKED',
-    classes: 'bg-violet-50 text-violet-700 ring-violet-200',
+    classes: 'bg-teal-50 text-teal-800 ring-teal-200',
   },
   skipped_policy: {
     label: 'POLICY SKIP',
@@ -111,7 +111,7 @@ export function WebhookTelemetry({
 
                   <div className="flex shrink-0 items-center gap-2">
                     {log.action === 'skipped_loop' ? (
-                      <ShieldAlert className="h-4 w-4 text-violet-600" />
+                      <ShieldAlert className="h-4 w-4 text-teal-700" />
                     ) : (
                       <ShieldCheck className="h-4 w-4 text-emerald-600" />
                     )}
